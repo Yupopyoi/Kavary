@@ -35,11 +35,12 @@ python src/cui_wav_test.py --input_wav your_voice.wav --pth_name your_rvc_model.
 |output_wav | 可能 　　|  str  | rvc_output_wav | 変換後の wav ファイルの相対パス                        |
 |hubert_name| 可能 　　|  str  | hubert_base.pt | hubertモデルの名称                                    |
 |pth_name   | 不可 　　|  str  |                | 変換に用いる RVC モデルの名称（.pth）                   |
-|index_name | 可能 　　|  str  | None           | indexファイルの名称 (指定しない場合はindexを使用しません)|
-|pitch      | 可能 　　|  int  | 12             | ピッチの変換量（半音単位）, 男性->女性では 12 を推奨     |
+|index_name | 可能 　　|  str  | None           | indexファイルの名称 (省略時はindexを使用しない)         |
+|pitch      | 可能 　　|  int  | 12             | ピッチの変換量（半音単位）, 男性->女性では 12           |
 |index_rate | 可能 　　| float | 0              | index の反映割合 [0,1]                                |
 
-_name で終わる引数名については、```model``` ディレクトリより下の名称のみを記載してください。
+> [!IMPORTANT]
+> _name で終わる引数名については、```model``` ディレクトリより下の名称のみを記載してください。
 
 ## リアルタイム音声変換
 
@@ -66,7 +67,8 @@ python src/cui_mic_test.py --pth_name your_rvc_model.pth --index_name your_rvc_m
 python src/cui_mic_test.py --pth_name your_rvc_model.pth --index_name your_rvc_model.index --index_rate 0.5 --device 1
 ```
 
-```--device``` により、デバイス選択をスキップすることができます
+> [!TIP]
+> ```--device``` により、デバイス選択をスキップすることができます
 
 ### cui_mic_test.py 引数
 
@@ -75,8 +77,8 @@ python src/cui_mic_test.py --pth_name your_rvc_model.pth --index_name your_rvc_m
 |device       | 可能 　　|  int  |                | 使用するデバイス（省略した場合は後に選択を求められます）  |
 |hubert_name  | 可能 　　|  str  | hubert_base.pt | hubertモデルの名称                                    |
 |pth_name     | 不可 　　|  str  |                | 変換に用いる RVC モデルの名称（.pth）                   |
-|index_name   | 可能 　　|  str  | None           | indexファイルの名称 (指定しない場合はindexを使用しません)|
-|default_pitch| 可能 　　|  int  | 12             | ピッチの変換量（半音単位）, 男性->女性では 12 を推奨     |
+|index_name   | 可能 　　|  str  | None           | indexファイルの名称 (省略時はindexを使用しない)         |
+|default_pitch| 可能 　　|  int  | 12             | ピッチの変換量（半音単位）, 男性->女性では 12           |
 |index_rate   | 可能 　　| float | 0              | index の反映割合 [0,1]                                |
 
 ## Issues
