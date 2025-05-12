@@ -1,6 +1,9 @@
-import sounddevice as sd
-from rvc_executor import RVCModel
 import argparse
+import os
+import pathlib
+import sounddevice as sd
+
+from rvc_executor import RVCModel
 
 def list_input_devices():
     print("=== Available Input Devices ===")
@@ -11,9 +14,15 @@ def list_input_devices():
     return input_devices
 
 def main():
+    work_directory = pathlib.Path(__file__).parent.parent # work directory of "Kavary"
+    
     parser = argparse.ArgumentParser()
     parser.add_argument("--device", type=int, default=None, help="Input device index")
+    parser.add_argument('--hubert_name', type=str, default= "hubert_base.pt")
+    parser.add_argument('--pth_name', type=str, required=True)
+    parser.add_argument('--index_name', type=str, default="None")
     parser.add_argument("--default_pitch", type=int, default=12, help="Input device index")
+    parser.add_argument('--index_rate', type=float, default=0.0)
     args = parser.parse_args()
 
     if args.device is None:
@@ -28,10 +37,10 @@ def main():
     # 必要なモデル設定を指定
     model = RVCModel(
         key=args.default_pitch,  # ピッチ補正
-        hubert_path="../model/hubert_base.pt",
-        pth_path="../model/Miko.pth",
-        index_path="../model/Miko.index",
-        index_rate=0.0,
+        hubert_path=os.path.join(work_directory, "model", args.hubert_name), 
+        pth_path=os.path.join(work_directory, "model", args.pth_name),
+        index_path=os.path.join(work_directory, "model", args.index_name),
+        index_rate=args.index_rate,
     )
 
     # マイク入力→変換→再生
