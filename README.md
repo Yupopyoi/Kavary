@@ -74,7 +74,7 @@ python src/cui_mic_test.py --pth_name your_rvc_model.pth --index_name your_rvc_m
 
 | 引数名     　| 省略可否 |  型  |   デフォルト値   |                          説明                        |
 |:-----------:|:-------:|:-----:|:--------------:|:----------------------------------------------------:|
-|device       | 可能 　　|  int  |                | 使用するデバイス（省略時は後に選択を求められます）  |
+|device       | 可能 　　|  int  |                | 使用デバイス（省略時は後に選択を求められます）           |
 |hubert_name  | 可能 　　|  str  | hubert_base.pt | hubertモデルの名称                                    |
 |pth_name     | 不可 　　|  str  |                | 変換に用いる RVC モデルの名称（.pth）                   |
 |index_name   | 可能 　　|  str  | None           | indexファイルの名称 (省略時はindexを使用しない)         |
